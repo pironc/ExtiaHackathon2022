@@ -3,6 +3,7 @@ package main
 import (
 	"encoding/json"
 	"fmt"
+	"io/ioutil"
 	"log"
 	"net/http"
 	"os"
@@ -43,19 +44,16 @@ func front(w http.ResponseWriter, r *http.Request) {
 			w.Write(res)
 		}
 	}
-
-	// json.Marshal(body)
-	// // requ, _ := http.Get(personalKey + "/module/board/?format=json&start=2022-05-09&end=2022-05-16")
-	// // json.NewDecoder(requ.Body).Decode(&body)
-	// fmt.Println(body)
 }
 
 func admin(w http.ResponseWriter, r *http.Request) {
-	var body City
-	json.Marshal(body)
-	// requ, _ := http.Get(personalKey + "/module/board/?format=json&start=2022-05-09&end=2022-05-16")
-	// json.NewDecoder(requ.Body).Decode(&body)
-	fmt.Println(body)
+	if r.Method == "GET" {
+		file, err := ioutil.ReadFile("database.json")
+		if err != nil {
+			log.Fatal(err)
+		}
+		w.Write(file)
+	}
 }
 
 func main() {
@@ -63,7 +61,7 @@ func main() {
 	http.HandleFunc("/admin", admin)
 
 	fmt.Printf("Starting server for testing HTTP POST...\n")
-	if err := http.ListenAndServe(":8000", nil); err != nil {
+	if err := http.ListenAndServe(":6969", nil); err != nil {
 		log.Fatal(err)
 	}
 }
