@@ -1,32 +1,12 @@
-{
-    "Barcelona": {
-        "Rent": {
-            "onebedcitycenter": "979.17",
-            "onebedoutsidecenter": "785.07"
-        },
-        "Restaurants": {
-            "InexpensiveMeal": "12.90",
-            "Beer": "3.00"
-        }
+[
+    {
+        "city": "Paris",
+        "rent": 1240,
+        "beer": 6
     },
-    "Paris": {
-        "Rent": {
-            "onebedcitycenter": "1,269.07",
-            "onebedoutsidecenter": "928.11"
-        },
-        "Restaurants": {
-            "InexpensiveMeal": "15.00",
-            "Beer": "6.50"
-        }
-    },
-    "Milan": {
-        "Rent": {
-            "onebedcitycenter": "1,202.27",
-            "onebedoutsidecenter": "819.38"
-        },
-        "Restaurants": {
-            "InexpensiveMeal": "18.00",
-            "Beer": "6.00"
-        }
+    {
+        "city": "Barcelona",
+        "rent": 913,
+        "beer": 3
     }
-}
+]
