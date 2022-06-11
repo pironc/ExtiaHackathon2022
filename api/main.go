@@ -37,7 +37,6 @@ func modify_database(city City) error {
 	}
 	defer file.Close()
 	b, _ := json.Marshal(data)
-	fmt.Println(string(b))
 	file.Write(b)
 	return nil
 }
