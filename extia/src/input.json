@@ -1,0 +1,12 @@
+[
+    {
+        "city": "Paris",
+        "rent": 1240,
+        "beer": 6
+    },
+    {
+        "city": "Barcelona",
+        "rent": 913,
+        "beer": 3
+    }
+]
