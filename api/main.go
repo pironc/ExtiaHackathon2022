@@ -89,7 +89,7 @@ func main() {
 	http.HandleFunc("/admin", admin)
 
 	fmt.Printf("Starting server for testing HTTP POST...\n")
-	if err := http.ListenAndServe(":6969", nil); err != nil {
+	if err := http.ListenAndServe(":8000", nil); err != nil {
 		os.Exit(500)
 	}
 }
