@@ -1,13 +1,22 @@
 import logo from './logo.svg';
 import './App.css';
 
+import input from './input.json';
+const obj = JSON.stringify(input);
+const json = JSON.parse(obj);
+var array = []
+
 function App() {
+  for (const key in json) {
+    array.push(key)
+  }
+
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          {array}
         </p>
         <a
           className="App-link"
