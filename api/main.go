@@ -13,8 +13,8 @@ type City struct {
 	Name string `json:"city"`
 
 	Rent float32 `json:"rent"`
-	// insert data types that you wanna add
-
+	// insert data types that you wanna add in the correct format:
+	// VARNAME TYPE `json:"NAME IN JSON"`
 }
 
 func get_database() []City {
@@ -28,6 +28,23 @@ func get_database() []City {
 		log.Fatal(err)
 	}
 	return body
+}
+
+func modify_database(city City) {
+	data := get_database()
+	for i := 0; i < len(data); i++ {
+		if city.Name == data[i].Name {
+			data[i] = city
+		}
+	}
+	file, err := os.Create("database.json")
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer file.Close()
+	b, _ := json.Marshal(data)
+	fmt.Println(string(b))
+	file.Write(b)
 }
 
 func front(w http.ResponseWriter, r *http.Request) {
@@ -57,21 +74,7 @@ func admin(w http.ResponseWriter, r *http.Request) {
 	if r.Method == "POST" {
 		var change City
 		json.NewDecoder(r.Body).Decode(&change)
-		data := get_database()
-		for i := 0; i < len(data); i++ {
-			if change.Name == data[i].Name {
-				data[i] = change
-			}
-		}
-		file, err := os.Create("database.json")
-		if err != nil {
-			log.Fatal(err)
-		}
-		defer file.Close()
-		b, _ := json.Marshal(data)
-		fmt.Println(string(b))
-		file.Write(b)
-
+		modify_database(change)
 	}
 }
 
