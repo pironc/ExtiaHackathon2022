@@ -1,9 +1,1 @@
-[{
-        "city": "Paris",
-        "rent": 3000.00
-    },
-    {
-        "city": "Bare",
-        "rent": 50.00
-    }
-]
+[{"city":"Paris","rent":90},{"city":"Bare","rent":50}]

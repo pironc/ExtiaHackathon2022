@@ -54,6 +54,25 @@ func admin(w http.ResponseWriter, r *http.Request) {
 		}
 		w.Write(file)
 	}
+	if r.Method == "POST" {
+		var change City
+		json.NewDecoder(r.Body).Decode(&change)
+		data := get_database()
+		for i := 0; i < len(data); i++ {
+			if change.Name == data[i].Name {
+				data[i] = change
+			}
+		}
+		file, err := os.Create("database.json")
+		if err != nil {
+			log.Fatal(err)
+		}
+		defer file.Close()
+		b, _ := json.Marshal(data)
+		fmt.Println(string(b))
+		file.Write(b)
+
+	}
 }
 
 func main() {
