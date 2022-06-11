@@ -55,12 +55,14 @@ func front(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	city2, _ := r.URL.Query()["city2"]
+	var final []City
 	for i := 0; i < len(data); i++ {
 		if city1[0] == data[i].Name || city2[0] == data[i].Name {
-			res, _ = json.Marshal(data[i])
-			w.Write(res)
+			final = append(final, data[i])
 		}
 	}
+	res, _ = json.Marshal(final)
+	w.Write(res)
 }
 
 func admin(w http.ResponseWriter, r *http.Request) {
